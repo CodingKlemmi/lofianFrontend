@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <h2>DocId-Suche</h2>
+        <div class="col">
+            <input type="text" [formControl]="DocIdCtrl" 
+            mat-raised-button matTooltipPosition="after" matTooltip="Pattern: [0-9A-Za-z-+]*"
+            class="form-control flex-grow m-3" id="DocId" placeholder="DocId">
+        </div>
+        <div class="col text-end">
+            <button class="btn btn-primary" (click)="submitDocId()" type="submit" [disabled]="enableBtn()">
+                Submit
+            </button>
+        </div>
+    </div>
+    @if(DocIdCtrl.invalid && DocIdCtrl.dirty){
+    <div>
+        invalid input. Please enter only letters and numbers
+    </div>
+}
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <h2>Schlagwortsuche</h2>
+        <div class="col">
+            <input type="text" [formControl]="keywordCtrl" 
+            mat-raised-button matTooltipPosition="after" matTooltip="Pattern: [A-Za-z-0-9]+$"
+            class="form-control m-3" id="keyword" placeholder="Schlagwortsuche">
+        </div>
+        <div class="col text-end">
+            <button class="btn btn-primary" (click)="submitKeyword()" type="submit" [disabled]="enableBtn()">Submit</button>
+        </div>
+        @if (keywordCtrl.invalid &&keywordCtrl.dirty) {
+            <div>
+                Invalid INPUT
+            </div>
+        }
+    </div>
+</div>
