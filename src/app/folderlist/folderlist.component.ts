@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, throwError } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { Folder } from '../folder.model';
 })
 export class FolderListComponent implements OnInit {
   folders = signal<Folder[] | undefined>(undefined);
-  constructor(private httpClient: HttpClient) {}
+  private httpClient = inject(HttpClient);
 
   ngOnInit(): void {
     // Directly use the array response instead of trying to access a property 'folders'

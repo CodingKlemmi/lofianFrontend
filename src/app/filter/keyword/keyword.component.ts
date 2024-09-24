@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'app-keyword',
@@ -10,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './keyword.component.scss'
 })
 export class KeywordComponent {
+  public filterService = inject(FilterService);
 
   keywordCtrl = new FormControl<string>('',{
     validators: [
@@ -25,10 +27,6 @@ export class KeywordComponent {
     } else {
       console.log('suchwort nicht valide');
     }
-  }
-
-  enableBtn() :Boolean {
-    return !this.keywordCtrl.valid;
   }
 
 }

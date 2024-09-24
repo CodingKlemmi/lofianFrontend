@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-upload',
@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent {
-  constructor(private http: HttpClient) {
-  }
+
+
+  private httpClient = inject(HttpClient);
 
   private uploadEndpoint: string = 'http://localhost:8080/upload';
 
@@ -26,7 +27,7 @@ export class UploadComponent {
       console.log(`Selected file: ${this.selectedFile.name}`);
       const formData = new FormData();
       formData.append('file', this.selectedFile);
-      this.http.post(this.uploadEndpoint, formData, {responseType: 'text'}).subscribe({
+      this.httpClient.post(this.uploadEndpoint, formData, {responseType: 'text'}).subscribe({
         next: (response) => {
           console.log('Response:', response);
         },

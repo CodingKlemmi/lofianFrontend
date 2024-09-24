@@ -1,21 +1,19 @@
 <div class="container">
   <div class="row">
-    <h2 class="mb-3 w-100">IP-Suche</h2>
-    <form [formGroup]="ipCtrl" (ngSubmit)="submitIp()" class="w-100">
-      <div formArrayName="octets" class="d-flex">
-        @for (control of octets.controls; track $index; let i = $index) {
-          <div class="flex-grow m-3">
-            <input [formControl]="getFormControl(i)" type="number" 
-            mat-raised-button matTooltipPosition="after" matTooltip="Pattern: [0-255]"
-            class="form-control inputEl" id="octet{{i}}" placeholder="0-255" >
-          </div>
-        }
-        <div class="ms-auto">
-          <button class="btn btn-primary" type="submit" [disabled]="enableBtn()">
-            Submit
-          </button>
-        </div>
+      <h2>IP-Suche</h2>
+      <div class="col">
+          <input type="text" [formControl]="ipCtrl" 
+          mat-raised-button matTooltipPosition="after" matTooltip="Pattern: [A-Za-z-0-9]+$"
+          class="form-control m-3" id="ip" placeholder="Schlagwortsuche">
       </div>
-    </form>
-  </div>    
+      <div class="col text-end">
+          <button class="btn btn-primary" (click)="filterService.submitFilter(ipCtrl)" type="submit" 
+          [disabled]="!filterService.enableBtn(ipCtrl)">Submit</button>
+      </div>
+      @if (ipCtrl.invalid && ipCtrl.dirty) {
+          <div>
+              Invalid INPUT
+          </div>
+      }
+  </div>
 </div>

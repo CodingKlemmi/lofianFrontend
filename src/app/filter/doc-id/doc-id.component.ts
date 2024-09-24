@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FilterService } from '../filter.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: './doc-id.component.html',
   styleUrl: './doc-id.component.scss'
 })
-export class DocIdComponent {
+export class DocIdComponent {  
+  public filterService = inject(FilterService); 
   
   DocIdCtrl = new FormControl('', {
     validators: [
@@ -19,17 +21,4 @@ export class DocIdComponent {
       ],
     }
   );
-
-  submitDocId() {
-    if (this.DocIdCtrl.valid) {
-      const docId = this.DocIdCtrl.value;
-      console.log('DocID:', docId)
-    }else{
-      console.log('flasches Eingabemuster');
-    }
-  };
-
-  enableBtn(): boolean {
-    return !this.DocIdCtrl.valid
-  }
 }

@@ -1,1 +1,19 @@
-<p>sap-id works!</p>
+<div class="container">
+    <div class="row">
+        <h2>SapId-Suche</h2>
+        <div class="col">
+            <input type="text" [formControl]="sapIdCtrl" 
+            mat-raised-button matTooltipPosition="after" matTooltip="Pattern: 999[0-9A-Za-z]{3}999_[0-9A-Za-z]{2}_[0-9A-Za-z-_]+ "
+            class="form-control m-3" id="sapId" placeholder="SapId">
+        </div>
+        <div class="col text-end">
+            <button class="btn btn-primary" (click)="submitSapId()" type="submit" 
+            [disabled]="!filterService.enableBtn(sapIdCtrl)">Submit</button>
+        </div>
+        @if (sapIdCtrl.invalid &&sapIdCtrl.dirty) {
+            <div>
+                Invalid INPUT
+            </div>
+        }
+    </div>
+</div>

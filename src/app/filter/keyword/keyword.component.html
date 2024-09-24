@@ -7,7 +7,8 @@
             class="form-control m-3" id="keyword" placeholder="Schlagwortsuche">
         </div>
         <div class="col text-end">
-            <button class="btn btn-primary" (click)="submitKeyword()" type="submit" [disabled]="enableBtn()">Submit</button>
+            <button class="btn btn-primary" (click)="filterService.submitFilter(keywordCtrl)" type="submit" 
+            [disabled]="!filterService.enableBtn(keywordCtrl)">Submit</button>
         </div>
         @if (keywordCtrl.invalid &&keywordCtrl.dirty) {
             <div>

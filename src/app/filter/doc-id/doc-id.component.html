@@ -7,7 +7,7 @@
             class="form-control flex-grow m-3" id="DocId" placeholder="DocId">
         </div>
         <div class="col text-end">
-            <button class="btn btn-primary" (click)="submitDocId()" type="submit" [disabled]="enableBtn()">
+            <button class="btn btn-primary" type="submit" (click)="filterService.submitFilter(DocIdCtrl)"[disabled]="!filterService.enableBtn(DocIdCtrl)">
                 Submit
             </button>
         </div>
