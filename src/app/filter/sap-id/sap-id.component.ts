@@ -22,12 +22,12 @@ export class SapIdComponent {
     ],
   });
 
-  submitSapId() {
-    if(this.sapIdCtrl.valid) {
-      const sapId =this.sapIdCtrl.value;
-      console.log('SapId lautet:', sapId);
-    }else{
-      console.log('fehlerhafte eingabe')
-    }
-  }
+  // submitSapId() {
+  //   if(this.sapIdCtrl.valid) {
+  //     const sapId =this.sapIdCtrl.value;
+  //     console.log('SapId lautet:', sapId);
+  //   }else{
+  //     console.log('fehlerhafte eingabe')
+  //   }
+  // }
 }

@@ -27,6 +27,7 @@ export class UploadComponent {
       console.log(`Selected file: ${this.selectedFile.name}`);
       const formData = new FormData();
       formData.append('file', this.selectedFile);
+      
       this.httpClient.post(this.uploadEndpoint, formData, {responseType: 'text'}).subscribe({
         next: (response) => {
           console.log('Response:', response);

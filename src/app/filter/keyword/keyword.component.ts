@@ -20,13 +20,13 @@ export class KeywordComponent {
     ],
   });
 
-  submitKeyword() {
-    if (this.keywordCtrl.valid) {
-      const keyword = this.keywordCtrl.value;
-      console.log('Eingegebenes Suchwort: ', keyword);
-    } else {
-      console.log('suchwort nicht valide');
-    }
-  }
+  // submitKeyword() {
+  //   if (this.keywordCtrl.valid) {
+  //     const keyword = this.keywordCtrl.value;
+  //     console.log('Eingegebenes Suchwort: ', keyword);
+  //   } else {
+  //     console.log('suchwort nicht valide');
+  //   }
+  // }
 
 }

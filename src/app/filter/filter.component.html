@@ -1,5 +1,16 @@
+<div class="container">
+    <h2>Suche</h2>
+    <ul class="list-group">
+        @for (folder of folders; track folder.id)
+        {
+              <li class="list-group-item">
+                <i class="fas fa-folder"> {{folder.name}}</i>
+              </li>
+        }
+      </ul>
 <app-doc-id>
 </app-doc-id>
 <app-ip></app-ip>
 <app-keyword></app-keyword>
 <app-sap-id></app-sap-id>
+</div>

@@ -1,21 +1,23 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Folder } from '../folder.model';
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
 })
 export class FilterService{
-    constructor(
-        private httpClient: HttpClient,
-    ) {};
-
-    
-
+    constructor(private httpClient: HttpClient) {};
     filterEndpoint = 'http://localhost:8080/filter';
 
     private filterValue: any = null;
 
+
+    getFolders(): Observable<any[]> {
+        return this.httpClient.get<any[]>(this.filterEndpoint);
+      }
+    
 
     submitFilter(input: FormControl):void {
         const value = input.value;
