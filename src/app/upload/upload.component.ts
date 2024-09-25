@@ -21,7 +21,7 @@ export class UploadComponent {
   }
 
   onSubmit(event: Event) {
-    event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+    event.preventDefault();
 
     if (this.selectedFile) {
       console.log(`Selected file: ${this.selectedFile.name}`);

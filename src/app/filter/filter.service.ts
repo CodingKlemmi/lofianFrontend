@@ -9,19 +9,39 @@ export class FilterService{
     constructor(
         private httpClient: HttpClient,
     ) {};
+
+    
+
+    filterEndpoint = 'http://localhost:8080/filter';
+
     private filterValue: any = null;
 
-    savedFilter: string | null = null;
-
-    enableBtn(control: FormControl): boolean {
-        return control.valid;
-      }
 
     submitFilter(input: FormControl):void {
         const value = input.value;
         this.filterValue = value;
         console.log(this.filterValue)
+
+        this.sendFilterToBackend();
     }
+
+    private sendFilterToBackend(): void {
+        const requestBody = { filter: this.filterValue };  // JavaScript Object
+        this.httpClient.post(this.filterEndpoint, requestBody, { responseType: 'text' }) //javascript object wird zu json 
+        .subscribe({
+          next: (response) => {
+            console.log('Filter erfolgreich an das Backend gesendet:', response);
+          },
+          error: (error) => {
+            console.error('Fehler beim Senden des Filters:', error);
+          }
+    });
+    }
+    
+
+    enableBtn(control: FormControl): boolean {
+        return control.valid;
+      }
 }
     
 
