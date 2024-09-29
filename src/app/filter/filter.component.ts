@@ -21,7 +21,7 @@ export class FilterComponent implements OnInit{
     this.filterService.getFolders().subscribe({
       next: (data: any[]) => {
         this.folders = data;
-        console.log('Ordner erhalten:', this.folders); // Zum Debuggen
+        //console.log('Ordner erhalten:', this.folders); // Zum Debuggen
       },
       error: (error: any) => {
         console.error('Fehler beim Abrufen der Ordner:', error);

@@ -1,82 +1,73 @@
 package Main.handlers;
 
+import Main.Folder;
+import Main.data.SharedData;
+import Main.utils.CorsUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import Main.data.SharedData;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FolderNamesHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange exchange) throws IOException {
-    // CORS hinzufügen
-    addCorsHeaders(exchange);
-
+    // CORS-Header hinzufügen und Preflight (OPTIONS) abfangen
+    CorsUtil.addCorsHeaders(exchange);
+    if (CorsUtil.handlePreflight(exchange)) {
+      return; // Preflight wurde bearbeitet, keine weitere Verarbeitung nötig
+    }
+    // OPTIONS-Anfrage für den CORS-Preflight beantworten
     if ("OPTIONS".equals(exchange.getRequestMethod())) {
-      exchange.sendResponseHeaders(200, -1); // CORS-Preflight
+      exchange.sendResponseHeaders(200, -1); // Send OK status for OPTIONS request
       return;
     }
 
     if ("GET".equals(exchange.getRequestMethod())) {
-      handleGetRequest(exchange);
-    } else if ("POST".equals(exchange.getRequestMethod())) {
-      handlePostRequest(exchange);
-    } else {
-      exchange.sendResponseHeaders(405, -1); // Method Not Allowed
-    }
-  }
+      // Erstelle eine Liste von Folder-Objekten
+      List<Folder> folderList = new ArrayList<>();
+      folderList.add(new Folder("1", "helicWebviewer"));
+      folderList.add(new Folder("2", "helicViewerservlet"));
+      folderList.add(new Folder("3", "helicApache"));
+      folderList.add(new Folder("4", "helicServer"));
 
-  private void handleGetRequest(HttpExchange exchange) throws IOException {
-    List<Folder> folderList = new ArrayList<>();
-    folderList.add(new Folder("1", "helicWebviewer"));
-    folderList.add(new Folder("2", "helicViewerservlet"));
-    folderList.add(new Folder("3", "helicApache"));
-    folderList.add(new Folder("4", "helicServer"));
+      // Konvertiere die Liste in JSON und sende sie an das Frontend
+      Gson gson = new Gson();
+      String jsonResponse = gson.toJson(folderList);
 
-    Gson gson = new Gson();
-    String jsonResponse = gson.toJson(folderList);
-
-    exchange.getResponseHeaders().set("Content-Type", "application/json");
-    exchange.sendResponseHeaders(200, jsonResponse.getBytes().length);
-    try (OutputStream os = exchange.getResponseBody()) {
+      exchange.getResponseHeaders().set("Content-Type", "application/json");
+      exchange.sendResponseHeaders(200, jsonResponse.getBytes().length);
+      OutputStream os = exchange.getResponseBody();
       os.write(jsonResponse.getBytes());
-    }
-  }
+      os.close();
+    } else if ("POST".equals(exchange.getRequestMethod())) {
+      // Lese die Auswahl, die vom Frontend gesendet wurde
+      InputStream inputStream = exchange.getRequestBody();
+      String requestBody = new String(inputStream.readAllBytes());
 
-  private void handlePostRequest(HttpExchange exchange) throws IOException {
-    InputStream inputStream = exchange.getRequestBody();
-    String requestBody = new String(inputStream.readAllBytes());
+      // Konvertiere die Auswahl in eine Liste von Ordnernamen
+      Gson gson = new Gson();
+      List<String> selectedFolders = gson.fromJson(requestBody, new TypeToken<List<String>>() {}.getType());
 
-    Gson gson = new Gson();
-    SharedData.folderNames = gson.fromJson(requestBody, new TypeToken<List<String>>() {}.getType());
-    System.out.println("Empfangene Ordnernamen: " + SharedData.folderNames);
+      // Speichere die Auswahl in SharedData
+      SharedData.setSelectedFolders(selectedFolders);
+      System.out.println("Empfangene Ordnerauswahl: " + SharedData.getSelectedFolders());
 
-    String response = "Ordnernamen erfolgreich empfangen!";
-    exchange.getResponseHeaders().set("Content-Type", "text/plain");
-    exchange.sendResponseHeaders(200, response.getBytes().length);
-    try (OutputStream os = exchange.getResponseBody()) {
+      // Sende eine Bestätigung zurück
+      String response = "Ordnerauswahl erfolgreich empfangen.";
+      exchange.getResponseHeaders().set("Content-Type", "text/plain");
+      exchange.sendResponseHeaders(200, response.getBytes().length);
+      OutputStream os = exchange.getResponseBody();
       os.write(response.getBytes());
-    }
-  }
-
-  private void addCorsHeaders(HttpExchange exchange) {
-    exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-    exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  }
-
-  // Simple Folder class
-  private static class Folder {
-    private String id;
-    private String name;
-
-    public Folder(String id, String name) {
-      this.id = id;
-      this.name = name;
+      os.close();
+    } else {
+      // Nicht unterstützte Methoden
+      exchange.sendResponseHeaders(405, -1);
     }
   }
 }

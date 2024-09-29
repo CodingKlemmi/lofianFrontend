@@ -1,9 +1,34 @@
 package Main.data;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
 
 public class SharedData {
-  // Statische Liste für geteilte Daten
-  public static List<String> folderNames = new ArrayList<>();
+  private static List<String> selectedFolders;
+  private static String filterInput;
+  private static File uploadedZipFile;
+
+  public static List<String> getSelectedFolders() {
+    return selectedFolders;
+  }
+
+  public static void setSelectedFolders(List<String> folders) {
+    selectedFolders = folders;
+  }
+
+  public static String getFilterInput() {
+    return filterInput;
+  }
+
+  public static void setFilterInput(String input) {
+    filterInput = input;
+  }
+
+  public static File getUploadedZipFile() {
+    return uploadedZipFile;
+  }
+
+  public static void setUploadedZipFile(File zipFile) {
+    uploadedZipFile = zipFile;
+  }
 }

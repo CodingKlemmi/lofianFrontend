@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 @Component({
   selector: 'app-upload',
@@ -8,7 +8,8 @@ import { Component, inject } from '@angular/core';
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent {
-
+  
+  successMsg = signal<string | undefined>(undefined);
 
   private httpClient = inject(HttpClient);
 
@@ -37,6 +38,7 @@ export class UploadComponent {
         },
         complete: () => {
           console.log('Request completed.');
+          this.successMsg.set("Upload erfolgreich.")
         }
       });
     } else {

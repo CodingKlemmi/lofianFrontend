@@ -6,6 +6,7 @@ import { UploadComponent } from './upload/upload.component';
 import { FolderListComponent } from "./folderlist/folderlist.component";
 import { FilterComponent } from "./filter/filter.component";
 import { DocIdComponent } from "./filter/doc-id/doc-id.component";
+import { InfoPanelComponent } from "./info-panel/info-panel.component";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { DocIdComponent } from "./filter/doc-id/doc-id.component";
     UploadComponent,
     FolderListComponent,
     FilterComponent,
-    DocIdComponent
+    DocIdComponent,
+    InfoPanelComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -1,45 +1,40 @@
 package Main.handlers;
 
-import com.sun.net.httpserver.HttpExchange;
+import Main.data.SharedData;
+import Main.utils.CorsUtil;
 import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpExchange;
 
 import java.io.*;
 
 public class FileUploadHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange exchange) throws IOException {
-    addCorsHeaders(exchange);
+    CorsUtil.addCorsHeaders(exchange);
 
-    if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
-      exchange.sendResponseHeaders(204, -1); // No Content for CORS
+    if (!exchange.getRequestMethod().equalsIgnoreCase("POST")) {
+      exchange.sendResponseHeaders(405, -1);
       return;
     }
 
-    if (!"POST".equalsIgnoreCase(exchange.getRequestMethod())) {
-      exchange.sendResponseHeaders(405, -1); // Method Not Allowed
-      return;
-    }
-
-    try (InputStream is = exchange.getRequestBody(); FileOutputStream fos = new FileOutputStream("uploaded.zip")) {
+    // Die Datei speichern und im SharedData referenzieren
+    File uploadedFile = new File("uploaded.zip");
+    try (InputStream is = exchange.getRequestBody(); FileOutputStream fos = new FileOutputStream(uploadedFile)) {
       byte[] buffer = new byte[1024];
-      int bytesRead;
-      while ((bytesRead = is.read(buffer)) != -1) {
-        fos.write(buffer, 0, bytesRead);
+      int read;
+      while ((read = is.read(buffer)) != -1) {
+        fos.write(buffer, 0, read);
       }
-    } catch (IOException e) {
-      e.printStackTrace();
+      fos.flush();
     }
+
+    // Die hochgeladene Datei in SharedData speichern
+    SharedData.setUploadedZipFile(uploadedFile);
 
     String response = "Datei erfolgreich hochgeladen.";
     exchange.sendResponseHeaders(200, response.length());
-    try (OutputStream os = exchange.getResponseBody()) {
-      os.write(response.getBytes());
-    }
-  }
-
-  private void addCorsHeaders(HttpExchange exchange) {
-    exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-    exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "POST, OPTIONS");
-    exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
+    OutputStream os = exchange.getResponseBody();
+    os.write(response.getBytes());
+    os.close();
   }
 }

@@ -12,6 +12,9 @@
             name="zipUpload" (change)="onFileSelected($event)" accept=".zip">
           </div>
           <button type="submit" class="btn btn-success">Upload</button>
+          @if (successMsg() !== undefined) {
+            <i class="text-success">{{successMsg()}} <i class="bi bi-check-all"></i></i>
+          }
         </form>
       </div>
     </div>

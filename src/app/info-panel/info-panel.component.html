@@ -1,0 +1,23 @@
+<div class="info-panel">
+    <h2>Info Panel</h2>
+  
+    <div>
+      <strong>Hochgeladene Zip-Datei:</strong>
+      <p>{{ zipFile }}</p>
+    </div>
+  
+    <div>
+      <strong>Ausgewählte Ordner:</strong>
+      <ul>
+        @for ( folder of selectedFolders; track $index) {
+            <li>{{ folder }}</li>
+        }
+    </ul>
+    </div>
+  
+    <div>
+      <strong>Filtereingabe:</strong>
+      <p>{{ filterInput }}</p>
+    </div>
+  </div>
+  
