@@ -18,7 +18,7 @@ public class FolderNamesHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange exchange) throws IOException {
     // CORS-Header hinzufügen und Preflight (OPTIONS) abfangen
-    CorsUtil.addCorsHeaders(exchange);
+    CorsUtil.addCorsHeaders(exchange); // nur diese einbinden?
     if (CorsUtil.handlePreflight(exchange)) {
       return; // Preflight wurde bearbeitet, keine weitere Verarbeitung nötig
     }

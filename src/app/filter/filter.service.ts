@@ -28,7 +28,9 @@ export class FilterService{
     }
 
     private sendFilterToBackend(): void {
+      console.log("zum backend", this.filterValue);
         const requestBody = { filter: this.filterValue };  // JavaScript Object
+        console.log(requestBody);
         this.httpClient.post(this.filterEndpoint, requestBody, { responseType: 'text' }) //javascript object wird zu json 
         .subscribe({
           next: (response) => {
@@ -36,7 +38,11 @@ export class FilterService{
           },
           error: (error) => {
             console.error('Fehler beim Senden des Filters:', error);
-          }
+          },
+          complete: () => {
+            console.log('Request completed.');
+            
+          } 
     });
     }
     

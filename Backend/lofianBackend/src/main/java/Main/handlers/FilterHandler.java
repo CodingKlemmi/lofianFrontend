@@ -11,7 +11,8 @@ import java.io.InputStream;
 public class FilterHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange exchange) throws IOException {
-    CorsUtil.addCorsHeaders(exchange);
+    CorsUtil.addCorsHeaders(exchange); //warum muss ich diese
+    CorsUtil.handlePreflight(exchange); // und diese einbinden
 
     if ("POST".equalsIgnoreCase(exchange.getRequestMethod())) {
       InputStream inputStream = exchange.getRequestBody();

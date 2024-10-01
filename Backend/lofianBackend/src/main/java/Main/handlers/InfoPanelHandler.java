@@ -15,6 +15,7 @@ public class InfoPanelHandler implements HttpHandler {
   @Override
   public void handle(HttpExchange exchange) throws IOException {
     CorsUtil.addCorsHeaders(exchange);
+
     if (CorsUtil.handlePreflight(exchange)) {
       return; // Preflight wurde bearbeitet, keine weitere Verarbeitung nötig
     }
