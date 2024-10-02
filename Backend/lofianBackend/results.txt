@@ -1,0 +1,52 @@
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Content-Type: application/http
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Content-Transfer-Encoding: binary
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 | GET xgkvxds10_c_arcdocumenttp?$filter=Id+eq+'3A6F09415F7545538C273D8EF08B9C3F'+and+Contrep+eq+'AA' HTTP/1.1
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Accept: application/json
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 | --batch
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Content-Type: application/http
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Content-Transfer-Encoding: binary
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 | GET xgkvxds10_c_documentpage?$filter=Id+eq+'3A6F09415F7545538C273D8EF08B9C3F'+and+Contrep+eq+'AA' HTTP/1.1
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Accept: application/json
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 | --batch
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Content-Type: application/http
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Content-Transfer-Encoding: binary
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 | GET xgkvxds10_c_annotation?$filter=Id+eq+'3A6F09415F7545538C273D8EF08B9C3F'+and+Contrep+eq+'AA' HTTP/1.1
+INFO   | jvm 1    | 2024/03/20 15:57:38 | Accept: application/json
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 |
+INFO   | jvm 1    | 2024/03/20 15:57:38 | --batch--
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [...]
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,788, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - ==========================request end================================================
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - ============================response begin==========================================
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Status code  : 202 ACCEPTED
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Status text  : Accepted
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Headers      : {content-type=[multipart/mixed; boundary=60F1E1D1B6B92D6475C352E7297C7DEB0], dataserviceversion=[2.0], cache-control=[no-cache, no-store, must-revalidate], sap-processing-info=[ODataBEP=,crp=,RAL=,st=,MedCacheHub=,codeployed=,softstate=], sap-server=[true], sap-perf-fesrec=[126260.000000]}
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Response body: <NOOP>
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateLoggingInterceptor] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - =======================response end=================================================
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Batch-Response 0:
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - 200
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - OK
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - application/json
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - {"d":{"results":[]}}
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,929, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - ====================
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Batch-Response 1:
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - 200
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - OK
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - application/json
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - {"d":{"results":[]}}
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - ====================
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - Batch-Response 2:
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,944, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - 200
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,976, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - OK
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,976, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - application/json
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,976, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - {"d":{"results":[]}}
+INFO   | jvm 1    | 2024/03/20 15:57:38 | [2024-03-20T15:57:38,976, RestTemplateBasedOdataClient] [ajp-nio-0.0.0.0-17009-exec-7] [Webviewer_61710946657538|61710946657538] [10.1.65.12:443->webviewer#257fb39] DEBUG - ====================
+INFO   | jvm 1    | 2024/03/20 15:58:03 | [2024-03-20T15:58:03,686, UiConfigController] [ajp-nio-0.0.0.0-17009-exec-4] [Webviewer_10.1.115.52_INST|10.1.115.52_INST] [10.1.65.12:443->webviewer#257fb39] INFO  - returning config: <D:\helicViewer\helic_webviewer\.\apache-tomcat-9.0.78\bin\..\..\helic_confs\helicWebviewer\ui-config-oscare.js>
+INFO   | jvm 1    | 2024/03/20 15:58:03 | [2024-03-20T15:58:03,749, LicenseStore] [ajp-nio-0.0.0.0-17009-exec-2] [Webviewer_10.1.115.52_INST|10.1.115.52_INST] [10.1.65.12:443->webviewer#257fb39] INFO  - Installing license [SEND-MAIL - 31.08.2024 ].

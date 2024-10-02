@@ -1,10 +1,7 @@
 package Main;
 
+import Main.handlers.*;
 import com.sun.net.httpserver.HttpServer;
-import Main.handlers.FileUploadHandler;
-import Main.handlers.FolderNamesHandler;
-import Main.handlers.FilterHandler;
-import Main.handlers.InfoPanelHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,6 +17,7 @@ public class Main {
       server.createContext("/folders", new FolderNamesHandler());
       server.createContext("/filter", new FilterHandler());
       server.createContext("/info", new InfoPanelHandler());
+      server.createContext("/results", new resultsHandler());
 
 
       server.setExecutor(null); // Default executor
@@ -30,6 +28,7 @@ public class Main {
       System.out.println("/folders bereit unter http://localhost:" + port + "/folders");
       System.out.println("/filter bereit unter http://localhost:" + port + "/filter");
       System.out.println("/info bereit unter http://localhost:" + port + "/info");
+      System.out.println("/results bereit unter http://localhost:" + port + "/results");
     } catch (IOException e) {
       e.printStackTrace();
     }
