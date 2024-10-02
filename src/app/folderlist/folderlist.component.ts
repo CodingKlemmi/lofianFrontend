@@ -4,6 +4,7 @@ import { catchError, map, throwError } from 'rxjs';
 
 import { Folder } from '../folder.model';
 import { FilterService } from '../filter/filter.service';
+import { InfoService } from '../info-panel/info.service';
 
 @Component({
   selector: 'app-folderlist',
@@ -18,6 +19,7 @@ export class FolderListComponent implements OnInit {
   private httpClient = inject(HttpClient);
   
   public filterService = inject(FilterService);
+  public infoService = inject(InfoService);
   ngOnInit(): void {
     
     this.httpClient.get<Folder[]>('http://localhost:8080/folders')  
@@ -50,6 +52,7 @@ export class FolderListComponent implements OnInit {
   }).subscribe({
     next: (response) => {
     console.log('Ordnernamen erfolgreich gesendet:', response);
+      this.infoService.updateSelectedFolders(this.selectedFolders);
   },
     error: (error) => 
     console.error('Fehler beim Senden der Ordnernamen:', error)

@@ -1,76 +1,36 @@
-<div class="container mx-auto">
-<!-- Nav tabs -->
-    <div class="container mx-auto">
-        <ul class="nav nav-tabs mx-auto" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button
-                    class="nav-link active"
-                    id="home-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#home"
-                    type="button"
-                    role="tab"
-                    aria-controls="home"
-                    aria-selected="true">
-                    Upload
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button
-                    class="nav-link"
-                    id="profile-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#profile"
-                    type="button"
-                    role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
-                >
-                    Profile
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button
-                    class="nav-link"
-                    id="messages-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#messages"
-                    type="button"
-                    role="tab"
-                    aria-controls="messages"
-                    aria-selected="false"
-                >
-                    Messages
-                </button>
-            </li>
-        </ul>
+<div class="container d-flex">
+    <div class="row">
+        <!--left-->
+        <div class="col-2" style="background-color: blue;">
+            @if (step>1 || step<4) {
+                <i class="bi bi-caret-left-fill"></i>
+            }
         </div>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div
-                class="tab-pane active"
-                id="home"
-                role="tabpanel"
-                aria-labelledby="home-tab">
-                <app-upload/>
-            </div>
-            <div
-                class="tab-pane"
-                id="profile"
-                role="tabpanel"
-                aria-labelledby="profile-tab"
-            >
-                <app-folderlist/>
-            </div>
-            <div
-                class="tab-pane"
-                id="messages"
-                role="tabpanel"
-                aria-labelledby="messages-tab"
-            >
-                <app-filter/>
-            </div>
+        <!--center-->
+        <div class="col-8" style="background-color: aqua;">
+            @switch (step) {
+                @case (1) {
+                  <app-folderlist></app-folderlist>
+                }
+                @case (2) {
+                  <app-filter></app-filter>
+                }
+                @case (3) {
+                    <app-results></app-results>
+                }
+                @default {
+                  <app-upload></app-upload>
+                }
+              }
         </div>
-
-        <app-info-panel></app-info-panel>
+        <!--right-->
+        <div class="col-2 d-flex justify-content-center align-items-center bg-primary" style="height: 100px;">
+            <button (click)="onClickNext()"></button>
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          
+        <div class="row">
+            <app-info-panel></app-info-panel>
+        </div>
+    </div>
 </div>

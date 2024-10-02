@@ -1,14 +1,16 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, signal } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Folder } from '../folder.model';
 import { Observable } from "rxjs";
+import { InfoService } from "../info-panel/info.service";
 
 @Injectable({
     providedIn: 'root',
 })
 export class FilterService{
     constructor(private httpClient: HttpClient) {};
+    private infoService = inject(InfoService);
     filterEndpoint = 'http://localhost:8080/filter';
 
     private filterValue: any = null;
@@ -35,6 +37,7 @@ export class FilterService{
         .subscribe({
           next: (response) => {
             console.log('Filter erfolgreich an das Backend gesendet:', response);
+            this.infoService.updateViewFilter(this.filterValue)
           },
           error: (error) => {
             console.error('Fehler beim Senden des Filters:', error);

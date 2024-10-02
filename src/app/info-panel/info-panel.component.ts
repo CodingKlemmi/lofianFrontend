@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { interval, Subscription } from 'rxjs';
+import { InfoService } from './info.service';
 
 
 @Component({
@@ -12,37 +13,30 @@ import { interval, Subscription } from 'rxjs';
 })
 
 export class InfoPanelComponent implements OnInit {
-  zipFile: string = '';
-  selectedFolders: string[] = [];
-  filterInput: string = '';
-  private subscription!: Subscription;
 
-  constructor(private http: HttpClient) {}
+  viewFilter: String = '';
+  viewUpload: String = '';
+  viewSelectedFolder: String = '';
+  selectedFolders: string[] = [];
+
+
+  constructor(private infoService: InfoService) {};
 
   ngOnInit(): void {
-    // Interval auf 1 Sekunde setzen (1000 ms)
-    this.subscription = interval(1000).subscribe(() => {
-      this.loadInfoData();
+
+    // Abonniere die Variablen aus dem SharedService
+    this.infoService.filterObserv$.subscribe(value => {
+      this.viewFilter = value;
     });
+
+    this.infoService.uploadObserv$.subscribe(value => {
+      this.viewUpload = value;
+    });
+
+    this.infoService.selectedFolders$.subscribe(folders => {
+      this.selectedFolders = folders;
+    });
+      
   }
 
-  ngOnDestroy(): void {
-    // Beende das Intervall, wenn die Komponente zerstört wird, um Speicherlecks zu vermeiden
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
-
-  loadInfoData(): void {
-    this.http.get<any>('http://localhost:8080/info').subscribe({
-      next: (data) => {
-        this.zipFile = data.zipFile;
-        this.selectedFolders = data.selectedFolders;
-        this.filterInput = data.filterInput;
-      },
-      error: (error) => {
-        console.error('Fehler beim Laden der Info-Daten', error);
-      }
-    });
-  }
 }
